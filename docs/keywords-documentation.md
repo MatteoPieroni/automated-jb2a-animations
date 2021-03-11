@@ -33,8 +33,7 @@ Weapon name is automatically recognized and plays with no color (just the weapon
 
 | Weapon Name | JB2A Patreon Color | Notes |
 | :---------- | :----------------- | :---- |
-| Dagger | | Switches between Melee and Range automatically. No colors currently for thrown, but can be set Melee. |
-| | | *Variants*: `Dagger02`, `Kunai` |
+| Dagger | | Switches between Melee and Range automatically. No colors currently for thrown, but can be set Melee. <br><br> *Variants*: `Dagger02`, `Kunai` |
 | Greataxe/Great Axe | | |
 | Greatclub/Great Club | | |
 | Greatsword/Great Sword | | |
