@@ -33,19 +33,19 @@ Weapon name is automatically recognized and plays with no color (just the weapon
 
 | Weapon Name | JB2A Patreon Color | Notes |
 | :---------- | :----------------- | :---- |
-| Dagger | | Switches between Melee and Range automatically. No colors currently for thrown, but can be set Melee. <br><br> *Variants*: `Dagger02`, `Kunai` |
-| Greataxe/Great Axe | | |
-| Greatclub/Great Club | | |
-| Greatsword/Great Sword | | |
-| Handaxe / Hand Axe | | Switches between Melee and Range automatically. No colors currently for thrown, but can be set for Melee. |
-| Lasersword | `Dark Red`, `Green`, `Purple`, `Red` | Default color is `Blue` in the Free Module |
-| Mace | | |
-| Maul | | |
-| Spear | | Switches between Melee and Range automatically. No colors currently for thrown, but can be set for Melee. |
-| Sword | | plays with anything using `sword` in the name except `Greatsword` |
-| Arrow/Bow | | *Variant Color*: `Green` |
-| Boulder | | |
-| Hammer | | |
-| Javelin | | |
-| Laser | | for laser guns |
-| Siege | | |
+| Dagger | `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Yellow` | Switches between Melee and Range automatically. <br> No colors currently for thrown, but can be set Melee. <br><br> *Variants*: `Dagger02`, `Kunai` |
+| Greataxe/Great Axe | `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Yellow` | |
+| Greatclub/Great Club | `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Yellow` | |
+| Greatsword/Great Sword | `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Yellow` | |
+| Handaxe / Hand Axe | `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Yellow` | Switches between Melee and Range automatically. <br> No colors currently for thrown, but can be set for Melee. |
+| Lasersword | `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Yellow`, `Dark Red`, `Green`, `Purple`, `Red` | Default color is `Blue` in the Free Module |
+| Mace | `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Yellow` | |
+| Maul | `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Yellow` | |
+| Spear | `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Yellow` | Switches between Melee and Range automatically. <br> No colors currently for thrown, but can be set for Melee. |
+| Sword | `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Yellow` | plays with anything using `sword` in the name except `Greatsword` |
+| Arrow/Bow | `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Yellow` | *Variant Color*: `Green` |
+| Boulder | `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Yellow` | |
+| Hammer | `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Yellow` | |
+| Javelin | `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Yellow` | |
+| Laser | `Blue`, `Green`, `Orange`, `Red` | for laser guns |
+| Siege | `Blue`, `Green`, `Orange`, `Pink`, `Purple`, `Yellow` | |
