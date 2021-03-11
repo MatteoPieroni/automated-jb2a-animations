@@ -31,6 +31,8 @@ Automated Animations picks an animation based on where the Token is in relation 
 
 Weapon name is automatically recognized and plays with no color (just the weapon). Put a Patreon Color in the items source or name field to change it.
 
+If not stated otherwise each weapon has the following color options: `Blue`, `Green`, `Orange`, `Red`, `Purple`, `Pink`, `Yellow`
+
 | Weapon Name | Type | Notes |
 | :---------- | :--- | :---- |
 | Arrow/Bow | Ranged | *Colors*: `Green` |
