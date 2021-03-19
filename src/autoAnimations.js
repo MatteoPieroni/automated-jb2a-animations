@@ -1,7 +1,7 @@
 import Dnd5Handler from "./system-handlers/dnd5-handler.js";
 import MidiHandler from "./system-handlers/midi-handler.js";
 import Pf1Handler from "./system-handlers/pf1-handler.js";
-//import dnd5ItemSheetHandler from "./system-handlers/dnd5ItemSheetHandler.js";
+import { AnimationTab } from "./item-sheet-handlers/item-sheet-config.js";
 
 // just swap which of these two lines is commented to turn on/off all logging
 //const log = console.log.bind(window.console);
@@ -11,6 +11,14 @@ Hooks.on('init', () => {
     game.settings.register("automated-jb2a-animations", "runonlyonce", { // game.setting.register("NameOfTheModule", "VariableName",
         name: "Disable the Startup Window Popup",                  // Register a module setting with checkbox
         hint: "Checking this box will prevent the Popup Window from showing its ugly mug",               // Description of the settings
+        scope: "world",                                    // This specifies a client-stored setting
+        config: true,                                       // This specifies that the setting appears in the configuration view
+        type: Boolean,
+        default: false,                                     // The default value for the setting
+    });
+    game.settings.register("automated-jb2a-animations", "hideFromPlayers", { // game.setting.register("NameOfTheModule", "VariableName",
+        name: "Hide the Animation Tab from Players",                  // Register a module setting with checkbox
+        hint: "Checking this box will prevent the Animation Tab from being seen by Players",               // Description of the settings
         scope: "world",                                    // This specifies a client-stored setting
         config: true,                                       // This specifies that the setting appears in the configuration view
         type: Boolean,
@@ -85,6 +93,10 @@ Hooks.on('init', () => {
     path00 = moduleIncludes("jb2a_patreon") === true ? `jb2a_patreon` : `JB2A_DnD5e`;
 })
 
+Hooks.on(`renderItemSheet`, (app, html, data) => {
+    AnimationTab.bind(app, html, data);
+});
+
 
 Hooks.once('ready', function () {
     if (game.user.isGM && (!game.modules.get("JB2A_DnD5e") && !game.modules.get("jb2a_patreon"))) {
@@ -98,6 +110,7 @@ Hooks.once('ready', function () {
 const wait = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
 
 var path00;
+
 
 function moduleIncludes(test) {
     return !!game.modules.get(test);
@@ -3238,3 +3251,4 @@ async function explodeOnTarget(handler) {
     }
     cast();
 }
+
