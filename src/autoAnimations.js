@@ -26,6 +26,7 @@ Hooks.on('init', () => {
     });
     switch (game.system.id) {
         case "dnd5e":
+        case "sw5efoundry":
             if (game.modules.get("midi-qol")?.active) {
                 game.settings.register("automated-jb2a-animations", "playonhit", {
                     name: 'Only play animations on Hits',
