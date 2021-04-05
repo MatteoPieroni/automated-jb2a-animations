@@ -1,3 +1,54 @@
+0.2.51:  
+- Added in checks for standard English in auto-recognition as a back-up to Localization. For cases where the items were in English but the browser is set to another langauge.  
+- Changed the Melee Animations to cycle through target list 1 by 1, rather than all at once. This fixes an issue where melee animations were repeated unnecessarily  
+- Added support for other Modules to call animations externally  
+- Removed "Improved Divine Smite" check (DnD5e), as this is better handled through the Animate Override tab now.  
+- back-end work to start cleaning up code.  
+  
+0.2.46:  
+- Reconfigured the Reach checks, and added Reach Check for PF1 attacks  
+  
+0.2.45:  
+- Added French Localization  
+  
+0.2.41 - 0.2.44:  
+- Add Spanish and Japanese localization
+- Fixed Targeting Trainer problems when used with Midi-QOL On-Hit option
+- Minor Bug fixes  
+  
+0.2.40:  
+- Add localication support  
+- Force refresh on Midi "On-Damage" setting change  
+  
+5.2.30:  
+- Added the ability to add Explosions to Melee Weapon Attacks. Must use the Override setting in the Animate Tab  
+- Added a "Targeting Assistant" Setting. Plays an animation on the Source Token when they attack without a target (Only for animations that require a target)  
+  
+0.2.23 & 0.2.24:  
+- Fix for Explosion Overrides not functioning as intended 
+
+2.2.21 Release:
+- Fixed selector on item sheet Tab (thanks hmqgg)  
+- Added auto-recognition for unarmed strikes (only if Patreon version of JB2A present). Uses randomized generic damage  
+- Updated the Animate Tab to only show Free JB2A options, if no Patreon module is present  
+- Updated the Pop-Up window to fix broken links  
+
+0.2.12 Release:  
+- Fixed a slight scaling issue with some attack spells.  
+- Added Dark Red color menu option for Eldritch Blast  
+
+0.2.11 Release:  
+- Corrected an issue where sometimes Eldritch Blast would play when it should not  
+- Added multi-target functionality for the On-Target explosion effects  
+- Corrected an issue with the 5e Second Wind feature, with override, not playing animations correctly  
+- Corrected an out of place line that would cause errors in the console  
+- Spelling correction  
+
+0.2.0 Release:  
+- Animate Tab is now live  
+- Source Field (DnD5e) is now Deprecated
+- Cure Wounds and Generic Healing animations now default to playing on self if no target is selected  
+
 0.1.7 Release:  
 - Actual support for PF1, sorry for the mishap  
 - Fixed an issue in DnD5e where Animations wouldn't play as intended. When multiple tokens from the same actor were on the canvas, the animations didn't work for them. This is fixed now.  

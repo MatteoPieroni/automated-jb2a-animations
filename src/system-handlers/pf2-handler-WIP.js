@@ -10,8 +10,7 @@ export default class Pf1Handler {
         this._item = item;
         this._actor = actor;    
         this._actorToken = canvas.tokens.ownedTokens.find(x => x.actor.id === actor.id);
-        this._allTargets = Array.from(message.user.targets);
-
+        this._allTargets = Array.from(message.user.targets)
         this._itemName = item.name?.toLowerCase();
 
         // getting flag data from Animation Tab
@@ -51,12 +50,8 @@ export default class Pf1Handler {
     }
 
     get reachCheck() {
-        let reach = 0;
-
-        if (this._item.data.data?.range?.units?.toLowerCase() === "reach") {
-            reach =+ 5;
-        }
-        return reach;
+        // to do
+        return 0;
     }
 
     get actorToken() {
@@ -64,10 +59,6 @@ export default class Pf1Handler {
     }
 
     get allTargets() {
-        return this._allTargets;
-    }
-
-    get targetAssistant() {
         return this._allTargets;
     }
 

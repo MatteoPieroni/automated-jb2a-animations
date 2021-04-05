@@ -1,37 +1,31 @@
-export default class Pf1Handler {
-    constructor(message) {
-        const item = message?.itemSource;
-        const actor = item?.options?.actor;
-    
-        if (!item || !actor) {
-            return;
-        }
-
+export default class GeneralAnimHandler {
+    constructor(sourceToken, targets, item) {
+        
+        this._actorToken = sourceToken;
         this._item = item;
-        this._actor = actor;    
-        this._actorToken = canvas.tokens.ownedTokens.find(x => x.actor.id === actor.id);
-        this._allTargets = Array.from(message.user.targets);
 
-        this._itemName = item.name?.toLowerCase();
+        this._allTargets = targets;
 
-        // getting flag data from Animation Tab
-        this._flags = item?.data?.flags?.autoanimations ?? "";;
-        // 
-        this._animColor = this._flags.color?.toLowerCase() ?? "";
+        this._flags = this._item.data?.flags?.autoanimations ?? "";
+
+        this._animColor = this._flags?.color?.toLowerCase() ?? "";
         this._animName = this._flags.animName?.toLowerCase() ?? "";
         this._animExColor = this._flags.explodeColor?.toLowerCase() ?? "";
         this._animExRadius = this._flags.explodeRadius?.toLowerCase() ?? "";
         this._animExVariant = this._flags.explodeVariant?.toLowerCase() ?? "";
-        this._animExLoop = this._flags.explodeLoop ?? "";
         this._animType = this._flags.animType?.toLowerCase() ?? "";
         this._animKill = this._flags.killAnim;
         this._animOverride = this._flags.override;
         this._animExplode = this._flags.explosion;
         this._animDgThrVar = this._flags.dtvar?.toLowerCase() ?? "";
-
+        
+        this._itemName = this._item.name?.toLowerCase() ?? '';;
+        this._itemSource = this._item.data?.data?.source?.toLowerCase() ?? '';
+        this._itemType = this._item.type.toLowerCase();
+        
         this._animNameFinal;
         switch (true) {
-            case((!this._animOverride) || ((this._animOverride) && (this._animName === ``))):
+            case ((!this._animOverride) || ((this._animOverride) && (this._animName === ``))):
                 this._animNameFinal = this._itemName;
                 break;
             default:
@@ -39,22 +33,29 @@ export default class Pf1Handler {
                 break;
         }
 
+        this._animColorEffect;
+        switch (true) {
+            case (this._animColor === ``):
+                this._animColorEffect = this._itemSource;
+                break;
+            default:
+                this._animColorEffect = this._animColor;
+                break;
+
+        }
     }
 
     get actor() {
-        return this._actor;
+        return this._actorToken.actor;
     }
-
-    get actorRace() {
-        // todo
-        return "";
-    }
-
+    
     get reachCheck() {
         let reach = 0;
-
-        if (this._item.data.data?.range?.units?.toLowerCase() === "reach") {
-            reach =+ 5;
+        if (this._actorToken.actor?.data?.data?.details?.race?.toLowerCase() === 'bugbear') {
+            reach += 5;
+        }
+        if (this._item.data?.data?.properties?.rch) {
+            reach +=5;
         }
         return reach;
     }
@@ -72,11 +73,11 @@ export default class Pf1Handler {
     }
 
     get isValid() {
-        return !!(this._item && this._actor);
+        return true;
     }
 
     get itemType() {
-        return this._actor.items.get(this._item.id).data.type.toLowerCase();
+        return this._item.type?.toLowerCase();
     }
 
     get checkSaves() {
@@ -128,52 +129,39 @@ export default class Pf1Handler {
     }
 
     getDistanceTo(target) {
-        const scene = game.scenes.active;
-        const gridSize = scene.data.grid;
-
-        const left = (token) => token.data.x;
-        const right = (token) => token.data.x + token.w;
-        const top = (token) => token.data.y;
-        const bottom = (token) => token.data.y + token.h;
-
-        const isLeftOf = right(this._actorToken) <= left(target);
-        const isRightOf = left(this._actorToken) >= right(target);
-        const isAbove = bottom(this._actorToken) <= top(target);
-        const isBelow = top(this._actorToken) >= bottom(target);
-
-        let x1 = left(this._actorToken);
-        let x2 = left(target);
-        let y1 = top(this._actorToken);
-        let y2 = top(target);
-
-        if (isLeftOf) {
-            x1 += (this._actorToken.data.width - 1) * gridSize;
+        var x, x1, y, y1, d, r, segments = [], rdistance, distance;
+        for (x = 0; x < this._actorToken.data.width; x++) {
+            for (y = 0; y < this._actorToken.data.height; y++) {
+                const origin = new PIXI.Point(...canvas.grid.getCenter(this._actorToken.data.x + (canvas.dimensions.size * x), this._actorToken.data.y + (canvas.dimensions.size * y)));
+                for (x1 = 0; x1 < target.data.width; x1++) {
+                    for (y1 = 0; y1 < target.data.height; y1++) {
+                        const dest = new PIXI.Point(...canvas.grid.getCenter(target.data.x + (canvas.dimensions.size * x1), target.data.y + (canvas.dimensions.size * y1)));
+                        const r = new Ray(origin, dest);
+                        segments.push({ ray: r });
+                    }
+                }
+            }
         }
-        else if (isRightOf) {
-            x2 += (target.data.width - 1) * gridSize;
+        if (segments.length === 0) {
+            return -1;
         }
-
-        if (isAbove) {
-            y1 += (this._actorToken.data.height - 1) * gridSize;
-        }
-        else if (isBelow) {
-            y2 += (target.data.height - 1) * gridSize;
-        }
-
-        const ray = new Ray({ x: x1, y: y1 }, { x: x2, y: y2 });
-        const distance = canvas.grid.grid.measureDistances([{ray}], {gridSpaces: true})[0];
+        rdistance = canvas.grid.measureDistances(segments, { gridSpaces: true });
+        distance = rdistance[0];
+        rdistance.forEach(d => {
+            if (d < distance)
+                distance = d;
+        });
         return distance;
     }
 
     itemIncludes() {
-        return [...arguments].every(a => this._itemName?.includes(a));
+        return [...arguments].every(a => this._animNameFinal?.includes(a) || this._itemSource?.includes(a));
     }
-
     itemSourceIncludes() {
         return [...arguments].every(a => this._itemSource?.includes(a));
     }
     itemColorIncludes() {
-        return [...arguments].every(a => this._animColor?.includes(a));
+        return [...arguments].every(a => this._animColorEffect?.includes(a));
     }
     itemNameIncludes() {
         return [...arguments].every(a => this._animNameFinal?.includes(a));
@@ -184,5 +172,6 @@ export default class Pf1Handler {
     animNameIncludes() {
         return [...arguments].every(a => this._animName?.includes(a));
     }
+
 
 }

@@ -1,17 +1,17 @@
-# Keywords  
-**BIG thanks to *brkwsk* for hepling with the formatting on Markdown**
+# Automatically Recognized names  
 
 These will be automatically recognized by the Automated Animations module.  
 
 ---
 ### Spells
 
-Spell name is automatically recognized and plays with the Default Color. Put a Patreon Color in the items source or name field to change it.
+Spell name is automatically recognized and plays with the Default Color. Change the color in the Animate Tab.
 
 | Spell Name | Default Color | JB2A Patreon Color |
 | :--------- | :------------ | :----------------- |
 | Cure Wounds | `Blue` | `Green`, `Purple`, `Red` |
 | Disintegrate | `Green` | `Dark Red`, `Orange Pink`, `Purple Blue` |
+| Eldritch Blast | `Purple` | `Dark Purple`, `Green`, `Yellow` |
 | Firebolt/Fire Bolt | `Orange` | `Red`, `Blue`, `Green`, `Purple` |
 | Healing Word | `Blue`, `Green`, `Purple`, `Yellow` | *all colors are available in the Free version* |
 | Magic Missile | `Purple` | `Blue`, `Green`, `Yellow`, `Random` |
@@ -32,7 +32,7 @@ Automated Animations picks an animation based on where the Token is in relation 
 ---
 ### Weapons
 
-Weapon name is automatically recognized and plays with no color (just the weapon). Put a Patreon Color in the items source or name field to change it.
+Weapon name is automatically recognized and plays with no color (just the weapon). Change the color in the Animate Tab.
 
 If not stated otherwise each weapon has the following color options: `Blue`, `Green`, `Orange`, `Red`, `Purple`, `Pink`, `Yellow`
 
@@ -46,27 +46,27 @@ If not stated otherwise each weapon has the following color options: `Blue`, `Gr
 | Greatsword/Great Sword | Melee | |
 | Hammer | Ranged | |
 | Handaxe/Hand Axe | Melee/Ranged | Switches between Melee and Ranged automatically. <br> No colors currently for ranged but can be set for melee. |
-| Laser | Ranged | For laser guns. <br> *Colors*: `Blue`, `Green`, `Orange`, `Red` |
-| Lasersword | Melee | Default color is `Blue` in the Free Module. |
 | Javelin | Ranged | |
+| Laser | Ranged | For laser guns. <br> *Colors*: `Blue`, `Green`, `Orange`, `Red` |
+| Lasersword | Melee | Default color is `Blue` in the Free Module. Dark Red also available |
 | Mace | Melee | |
 | Maul | Melee | |
+| Rapier | Melee | |
 | Spear | Melee/Ranged | Switches between Melee and Ranged automatically. <br> No colors currently for ranged, but can be set for Melee. |
 | Siege | Ranged | |
 | Sword | Melee | Plays with anything using the word `sword` in the name except Greatsword |  
 
 ---
 ### Generic Damage types (Patreon Only)
-**Currently can only be used for items that are not automatically recognized**  
-Place one of the following Keywords in the Source or Name field:
-| Keyword | Animation Type |
-| :-------| :--------------|
-| `1hs` | 1 handed slashing | |
-| `2hs` | 2 handed slashing | |
-| `1hp` | 1 handed piercing | |
-| `2hp` | 2 handed piercing | |
-| `1hb` | 1 handed bludgeoning | |
-| `2hb` | 2 handed bludgeoning | |  
+**Must be set via the Override box in the Animate Tab**  
+| Animation Type |
+| :--------------|
+| 1 handed slashing | |
+| 2 handed slashing | |
+| 1 handed piercing | |
+| 2 handed piercing | |
+| 1 handed bludgeoning | |
+| 2 handed bludgeoning | |  
 
 ---
 ### Creature Attacks  
@@ -79,29 +79,16 @@ Bite and Claw attacks are automatically recognized and play on the targeted toke
 
 ---
 ### Exploding Arrows  
-Add the keyword **explode** to the Name or Source field of **Longbow**, **Shortbow**, **Crossbow**, etc. (anything with **bow** in the name)  
-Keyword: **explode**  
-Variant: **02**  
+In the Animate Tab, enable the Explosions Checkbox. (This automatically shows if **bow** is in the item name, or if the **Arrow** animation is set through **Override**  
+Variant: **01** and **02**  
 Available Colors: `blue`, `green`, `orange`, `purple`, `yellow`  
 #### Set the Radius  
 **Defaults to 10 foot radius if no radius is specified**
-| Keyword | <div align="center">`(05)`</div> | <div align="center">`(10)`</div> | <div align="center">`(15)`</div> | <div align="center">`(20)`</div> | <div align="center">`(25)`</div> | <div align="center">`(30)`</div> | <div align="center">`(35)`</div> | <div align="center">`(40)`</div> | <div align="center">`(45)`</div> | <div align="center">`(50)`</div> | <div align="center">`nuke`</div> |
-|:--------| :----| :----| :----| :----| :----| :----| :----| :----| :----| :----| :----|
-| Radius | 5 feet | 10 feet | 15 feet | 20 feet | 25 feet | 30 feet | 35 feet | 40 feet | 45 feet | 50 feet | Fill the screen|  
-
-**Example 1**  
-**Item:** Longbow  
-**Source Field:** `explode green (30)` | or `explodegreen(30)`  
-**Result:** Green explosion on arrow impact with 30 feet Radius  
-
-**Example 2**  
-**Item:** Crossbow  
-**Source Field:** `explode 02 red (10)` | or `explode02red(10)`  
-**Result:** Red explosion on arrow impact with 30 feet Radius, Variant 02 explosion  
+Radius can be chosen from 5 foot (1 grid square) to 50 feet (10 grid square) or... a Nuclear blast size  
 
 ---
 ### Explosions with Templates  
-Example: Fireball, Thrown Bombs  
+Example: Fireball, Thrown Bombs, other AOE effects with Circular templates
 
 | <div align="center">Keywords</div> |
 | :--| 
@@ -113,13 +100,4 @@ Example: Fireball, Thrown Bombs
 
 #### Set the Radius  
 **Defaults to 10 foot radius if no radius is specified**
-| Keyword | <div align="center">`(05)`</div> | <div align="center">`(10)`</div> | <div align="center">`(15)`</div> | <div align="center">`(20)`</div> | <div align="center">`(25)`</div> | <div align="center">`(30)`</div> | <div align="center">`(35)`</div> | <div align="center">`(40)`</div> | <div align="center">`(45)`</div> | <div align="center">`(50)`</div> | <div align="center">`nuke`</div> |
-|:--------| :----| :----| :----| :----| :----| :----| :----| :----| :----| :----| :----|
-| Radius | 5 feet | 10 feet | 15 feet | 20 feet | 25 feet | 30 feet | 35 feet | 40 feet | 45 feet | 50 feet | Fill the screen|  
-
-**Example**  
-**Item:** Fireball  
-**Source Field:** `bomb red (45)` | or `bombred(45)`  
-**Result:** Red Explosion with 45 feet Radius
-
-
+Radius can be chosen from 5 foot (1 grid square) to 50 feet (10 grid square) or... a Nuclear blast size  
