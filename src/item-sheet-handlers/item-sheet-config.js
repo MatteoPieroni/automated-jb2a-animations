@@ -11,6 +11,9 @@ export class AnimationTab {
             case ("dnd5e"):
                 acceptedTypes = ['weapon', 'spell', 'consumable', 'feat'];
                 break;
+            case ("sw5efoundry"):
+                acceptedTypes = ['weapon', 'forcepower', 'techpower', 'consumable', 'feat'];
+                break;
             case ("pf1"):
                 acceptedTypes = ['attack', 'spell', 'consumable', 'feat', 'equipment'];
                 break;
@@ -52,6 +55,7 @@ export class AnimationTab {
 
         switch (game.system.id) {
             case ("dnd5e"):
+            case ("sw5efoundry"):
                 $(html.find(`.sheet-body`)).append($(
                     '<div class="tab animate-items" data-group="primary" data-tab="autoanimations"></div>'
                 ));
@@ -207,6 +211,7 @@ export class AnimationTab {
         if (this.activate && !this.isActive()) {
             switch (game.system.id) {
                 case ("dnd5e"):
+                case ("sw5efoundry"):
                     this.app._tabs[0].activate("autoanimations");
                     this.activate = false;
                     break;
